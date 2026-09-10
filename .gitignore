@@ -379,3 +379,6 @@ __pycache__/
 /solemne/solemne/cms/migrations
 /solemne/solemne/core/migrations
 /solemne/solemne/seeker/static/seeker/scripts/litref.js
+/lila/lila/cms/migrations
+/lila/lila/lict/migrations
+/lila/lila/seeker/migrations
