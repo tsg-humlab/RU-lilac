@@ -1,6 +1,8 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /* Issue #36: larger fontsize */
+    font-size: 16px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -1940,7 +1942,13 @@ table.dct-view tr td div.toolbox.dct .tooltip-inner tr td {
 /* Dragging collections */
 .coll-draggable:hover {
     cursor: grab;
-    border: 1px dotted red;
+    /* border: 1px dotted red; 
+    background-color: lightgoldenrodyellow;*/
+}
+.coll-draggable.badge.signature:hover {
+    color: blue;
+}
+.coll-draggable {
     background-color: lightgoldenrodyellow;
 }
 

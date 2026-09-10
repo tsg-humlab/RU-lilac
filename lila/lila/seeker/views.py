@@ -725,7 +725,7 @@ def home(request, errortype=None):
     # Specify the template
     template_name = 'index.html'
     # Define the initial context
-    context =  {'title':'RU-lila',
+    context =  {'title':'LiLaC',
                 'year':get_current_datetime().year,
                 'pfx': APP_PREFIX,
                 'site_url': admin.site.site_url}
@@ -764,7 +764,9 @@ def home(request, errortype=None):
     return render(request, template_name, context)
 
 def view_404(request, *args, **kwargs):
-    return home(request, "404")
+    # return home(request, "404")
+    sBack = "404 error for: {}".format(request.path)
+    return sBack
 
 def contact(request):
     """Renders the contact page."""

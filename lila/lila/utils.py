@@ -138,7 +138,7 @@ class BlockedIpMiddleware(object):
             remote_ip = self.get_client_ip(request)
             path = request.path            
 
-            if self.debug_level > 0:
+            if self.debug_level > 1:
                 oErr.Status("BlockedIpMiddleware: remote addr = [{}]".format(remote_ip))
 
             # Check for blocked IP

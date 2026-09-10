@@ -15,6 +15,11 @@ from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import RedirectView
+
+# ============== STATIC FILES EXPERIMENT =================
+#from django.conf import settings
+#from django.conf.urls.static import static
+
 from lila.basic.models import Custom
 
 # ================================ PROJECT SPECIFIC STUFF ==============================================
@@ -327,5 +332,7 @@ urlpatterns = [
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', admin.site.urls, name='admin_base'),
-]
+] 
+# ================== Static files experiment: ============================
+# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
