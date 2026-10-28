@@ -68,8 +68,9 @@ def import_authors(request):
 
     # Check if the user is authenticated and if it is POST
     if not request.user.is_authenticated  or request.method == 'POST':
+        bAccess = user_is_ingroup(request, app_uploader)
         form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
+        if bAccess and form.is_valid():
             # NOTE: from here a breakpoint may be inserted!
             print('valid form')
             # Get the contents of the imported file
@@ -404,41 +405,43 @@ def sync_progress(request):
     data = {'status': 'preparing'}
 
     try:
-        # Get the user
-        username = request.user.username
-        # Get the synchronization type
-        get = request.GET
-        synctype = ""
-        if 'synctype' in get:
-            synctype = get['synctype']
-
-        if synctype == '':
-            # Formulate a response
-            data['status'] = 'error'
-            data['msg'] = "no sync type specified" 
-
+        # Authentication
+        if not user_is_ingroup(request, app_editor):
+            data['status'] = "no access"
         else:
-            # Formulate a response
-            data['status'] = 'UNKNOWN'
+            # Get the user
+            username = request.user.username
+            # Get the synchronization type
+            get = request.GET
+            synctype = ""
+            if 'synctype' in get:
+                synctype = get['synctype']
 
-            # Get the appropriate status object
-            # sleep(1)
-            oStatus = Status.objects.filter(user=username, type=synctype).first()
-
-            # Check what we received
-            if oStatus == None:
-                # There is no status object for this type
+            if synctype == '':
+                # Formulate a response
                 data['status'] = 'error'
-                data['msg'] = "Cannot find status for {}/{}".format(
-                    username, synctype)
-            else:
-                # Get the last status information
-                data['status'] = oStatus.status
-                data['msg'] = oStatus.msg
-                data['count'] = oStatus.count
+                data['msg'] = "no sync type specified" 
 
-        # Return this response
-        return JsonResponse(data)
+            else:
+                # Formulate a response
+                data['status'] = 'UNKNOWN'
+
+                # Get the appropriate status object
+                # sleep(1)
+                oStatus = Status.objects.filter(user=username, type=synctype).first()
+
+                # Check what we received
+                if oStatus == None:
+                    # There is no status object for this type
+                    data['status'] = 'error'
+                    data['msg'] = "Cannot find status for {}/{}".format(
+                        username, synctype)
+                else:
+                    # Get the last status information
+                    data['status'] = oStatus.status
+                    data['msg'] = oStatus.msg
+                    data['count'] = oStatus.count
+
     except:
         oErr.DoError("sync_start error")
         data = {'status': 'error'}
@@ -451,6 +454,10 @@ def redo_zotero(request):
     data = {'status': 'preparing'}
 
     try:
+        # Authentication
+        if not user_is_ingroup(request, app_editor):
+            return redirect('home')
+        # Authenticated editor, so continue
         if request.method == 'GET':
             oBack, msg = Litref.sync_zotero(True)
         if oBack != None and 'status' in oBack:
