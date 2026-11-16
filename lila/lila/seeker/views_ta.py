@@ -29,7 +29,7 @@ import json
 
 
 # ======= imports from my own application ======
-from lila.utils import ErrHandle
+from lila.utils import ErrHandle, is_ajax
 from lila.seeker.models import get_crpp_date, get_current_datetime, process_lib_entries, get_searchable, get_now_time, \
     add_gold2equal, add_equal2equal, add_ssg_equal2equal, get_helptext, Information, Country, City, Author, Manuscript, \
     User, Group, Origin, Canwit, MsItem, Codhead, CanwitKeyword, CanwitAustat, NewsItem, \
@@ -54,7 +54,7 @@ def get_countries(request):
 
     data = 'fail'
     method = "useLocation"
-    if request.is_ajax():
+    if is_ajax(request):    # request.is_ajax():
         oErr = ErrHandle()
         try:
             sName = request.GET.get('country', '')
@@ -86,7 +86,7 @@ def get_cities(request):
 
     data = 'fail'
     method = "useLocation"
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             # Get the user-specified 'country' and 'city' strings
@@ -152,7 +152,7 @@ def get_libraries(request):
     """Get a list of libraries for autocomplete"""
 
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             # Get the user-specified 'country' and 'city' strings
@@ -213,7 +213,7 @@ def get_origins(request):
     """Get a list of origin names for autocomplete"""
 
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         sName = request.GET.get('name', '')
         lstQ = []
         lstQ.append(Q(name__icontains=sName))
@@ -233,7 +233,7 @@ def get_locations(request):
     """Get a list of location names for autocomplete"""
 
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sName = request.GET.get('name', '')
@@ -260,7 +260,7 @@ def get_litref(request):
     """Get ONE particular short representation of a litref"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -285,7 +285,7 @@ def get_litrefs(request):
     """Get a list of literature references for autocomplete"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sName = request.GET.get('name', '')
@@ -311,7 +311,7 @@ def get_aslink(request):
     """Get ONE particular short representation of a *link* from canwit to a Austat"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -336,7 +336,7 @@ def get_as2as(request):
     """Get ONE particular short representation of a *link* from SSG to a SSG"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -362,7 +362,7 @@ def get_as(request):
     """Get ONE particular short representation of an AS"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -387,7 +387,7 @@ def get_asdist(request):
     """Get AS distance"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -416,7 +416,7 @@ def get_manuidnos(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             idno = request.GET.get("name", "")
             lstQ = []
             lstQ.append(Q(idno__icontains=idno))
@@ -439,7 +439,7 @@ def get_authors(request):
     """Get a list of authors for autocomplete"""
 
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         author = request.GET.get("name", "")
         lstQ = []
         lstQ.append(Q(name__icontains=author)|Q(abbr__icontains=author))
@@ -461,7 +461,7 @@ def get_cwftexts(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             author = request.GET.get("name", "")
             lstQ = []
             lstQ.append(Q(srchftext__icontains=author))
@@ -487,7 +487,7 @@ def get_cwftrans(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             author = request.GET.get("name", "")
             lstQ = []
             lstQ.append(Q(srchftrans__icontains=author))
@@ -513,7 +513,7 @@ def get_asftexts(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             author = request.GET.get("name", "")
             lstQ = []
             lstQ.append(Q(srchftext__icontains=author))
@@ -539,7 +539,7 @@ def get_asftrans(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             author = request.GET.get("name", "")
             lstQ = []
             lstQ.append(Q(srchftrans__icontains=author))
@@ -565,7 +565,7 @@ def get_srmsignatures(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             codename = request.GET.get("name", "")
             editype = request.GET.get("type", "")
             lstQ = []
@@ -591,7 +591,7 @@ def get_sermosig(request):
     """Get the correct signature, given a SERMON signature"""
     
     data = 'fail'
-    if request.is_ajax():
+    if is_ajax(request):
         oErr = ErrHandle()
         try:
             sId = request.GET.get('id', '')
@@ -616,7 +616,7 @@ def get_keywords(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             # Get the complete code line, which could use semicolon-separation
             kwline = request.GET.get("name", "")
             kwlist = kwline.split(";")
@@ -644,7 +644,7 @@ def get_collections(request):
     oErr = ErrHandle()
     try:
         data = 'fail'
-        if request.is_ajax():
+        if is_ajax(request):
             # Get the complete code line, which could use semicolon-separation
             coll_line = request.GET.get("name", "")
             coll_list = coll_line.split(";")

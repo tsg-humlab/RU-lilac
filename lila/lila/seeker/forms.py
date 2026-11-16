@@ -4,13 +4,14 @@ Definition of forms.
 
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.forms import ModelMultipleChoiceField, ModelChoiceField
 from django.forms.widgets import *
 from django.db.models import F, Case, Value, When, IntegerField
 from django_select2.forms import ModelSelect2Mixin, Select2MultipleWidget, ModelSelect2MultipleWidget, ModelSelect2TagWidget, ModelSelect2Widget, HeavySelect2Widget
+
 from lila.seeker.models import *
-from lila.basic.widgets import RangeSlider
+from lila.basic.widgets import RangeSlider, MultipleFileInput
 
 def init_choices(obj, sFieldName, sSet, use_helptext=True, maybe_empty=False, bUseAbbr=False, exclude=None):
     if (obj.fields != None and sFieldName in obj.fields):
@@ -4494,7 +4495,7 @@ class UploadFilesForm(forms.Form):
     """This is for uploading multiple files"""
 
     files_field = forms.FileField(label="Specify which file(s) should be loaded",
-                                  widget=forms.ClearableFileInput(attrs={'multiple': True}))
+                                  widget=MultipleFileInput(attrs={'multiple': True}))
 
 
 class SearchUrlForm(forms.Form):

@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class cmsConfig(AppConfig):
-    name = 'cms'
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'lila.cms'

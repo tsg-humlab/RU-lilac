@@ -86,6 +86,7 @@ BLOCKED_IPS = ['40.77.167.57',      '161.35.188.242',
 SECRET_KEY = '561c5400-4ebf-4e45-a2ec-12d856638e45'
 
 ALLOWED_HOSTS = ['localhost', 'lilac.rich.ru.nl', 'testserver' ]
+CSRF_TRUSTED_ORIGINS = ['https://lilac.rich.ru.nl']
 
 # Caching
 if USE_REDIS:

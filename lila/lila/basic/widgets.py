@@ -1,3 +1,5 @@
+
+from django import forms
 from django.forms.widgets import NumberInput
 from django.utils.safestring import mark_safe
 import os
@@ -27,3 +29,7 @@ class RangeSlider(NumberInput):
         output.append("<div class='hidden'><input id='id_{}' type='text' name='{}' /></div>".format(org_name, org_name))
         # Combine and return
         return mark_safe('\n'.join(output))
+
+
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True

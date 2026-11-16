@@ -4,7 +4,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <Name>lila</Name>
     <RootNamespace>lila</RootNamespace>
-    <InterpreterId>MSBuild|lila39|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>MSBuild|lilac_39|$(MSBuildProjectFullPath)</InterpreterId>
     <WebBrowserPort>6902</WebBrowserPort>
     <SuppressConfigureTestFrameworkPrompt>true</SuppressConfigureTestFrameworkPrompt>
     <SuppressPackageInstallationPrompt>True</SuppressPackageInstallationPrompt>
@@ -369,6 +369,15 @@
       <Id>lila39</Id>
       <Version>3.9</Version>
       <Description>lila39 (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+    <Interpreter Include="..\..\..\..\..\env\lilac_39\">
+      <Id>lilac_39</Id>
+      <Version>3.9</Version>
+      <Description>lilac_39 (Python39_64)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>

@@ -13,7 +13,7 @@
     "version": "unknown",
     "description": "Django web application that contains sermon metadata and allows searching",
     "license": "unknown",
-	"url": "https://github.com/ErwinKomen/RU-lila",
+	"url": "https://github.com/tsg-humlab/RU-lila",
     "producer": {
         "@id": "https://www.ru.nl/humanitieslab/technical-support-group",
         "@type": "Organization",
@@ -57,7 +57,7 @@
 		"name": "Django with Python3"
 	},
 	"operatingSystem": "POSIX",
-	"codeRepository": "https://github.com/ErwinKomen/RU-lila",
+	"codeRepository": "https://github.com/tsg-humlab/RU-lila",
     "softwareRequirements": [],
 	"funder": [
 		{
@@ -66,7 +66,7 @@
 			"url": "https://cordis.europa.eu/project/rcn/218691/factsheet/en"
 		}
 	],
-	"issueTracker": "https://github.com/ErwinKomen/RU-lila/issues",
+	"issueTracker": "https://github.com/tsg-humlab/RU-lila/issues",
 	"developmentStatus": "active",
 	"keywords":  [ "syntax", "xquery" ],
     "referencePublication": [

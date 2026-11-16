@@ -3132,7 +3132,7 @@ class Litref(models.Model, Custom):
 class Project(models.Model, Custom):
     """Manuscripts may belong to the one or more projects (lila or others)"""
     
-    # Editor status? zie punt 4 bij https://github.com/ErwinKomen/RU-lila/issues/412
+    # Editor status? zie punt 4 bij https://github.com/tsg-humlab/RU-lila/issues/412
 
     # [1] Obligatory name for a project
     name = models.CharField("Name", max_length=LONG_STRING)

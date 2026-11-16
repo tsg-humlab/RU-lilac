@@ -5,6 +5,10 @@ from django import http
 
 from lila.basic.models import Address
 
+def is_ajax(request):
+    response = request.META.get('HTTP_X_REQUESTED_WITH') == 'XMLHttpRequest'
+    return response
+
 class ErrHandle:
     """Error handling"""
 
