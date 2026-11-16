@@ -19,6 +19,9 @@ openpyxl==3.0.9
 pyzotero==1.5.1
 reportlab==4.3.1            # 3.6.7
 
+# For compatibility with python 3.8.10:
+requests==2.25.1
+
 # Note: the correct numpy version must be use for a couple of packages
 numpy==1.22.1
   pandas==2.0.3
